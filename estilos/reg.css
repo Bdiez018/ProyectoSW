@@ -1,6 +1,6 @@
 body	{background-color:white}
 table	{border-spacing:15px}
-#container { width: 700px; height: 500px; background-color: #74CCF5; position: absolute; left: 500px; top: 100px; border: 1px solid black;    border-radius: 20px;}
+#container { width: 700px; height: 500px; background-color: #74CCF5; position: relative; top: 100px; border: 1px solid black; border-radius: 20px; margin: 0 auto}
 
 @media only screen and (min-width : 320px) and (max-width : 767px) and (orientation : portrait){
 	nput {
@@ -12,12 +12,12 @@ table	{border-spacing:15px}
     width: 100%;
     height: 100%;
     background-color: #74CCF5;
-    position: absolute;
     left: 0;
-    top: 100px;
+    top: 45px;
     border: 1px solid black;
     font-size: 12px;
     border-radius: 0px;
+	position: relative;
 	}
 }
 	
