@@ -1,0 +1,56 @@
+<html>
+	<head>
+	<title>Registro</title>
+	<script>
+		function vervalores(){
+			var sAux="";
+			var frm = document.getElementById("registro");
+			var cant;
+			for (i=0;i<frm.elements.length-1;i++)
+			{
+				sAux += frm.elements[i].name + "   :   ";
+				sAux += frm.elements[i].value + "\n" ;
+			}
+			alert(sAux);
+		}
+	</script> 
+	</head>
+	
+	<body bgcolor="#00CCFF">
+	<form id='registro' name='registro' onSubmit='vervalores()'>
+	<table>
+	<tr>
+		<td>Nombre y apellidos (*)</td>
+		<td><input type="text" name="Nombre" value="Escribe tu nombre"></input></td>
+	</tr>
+	<tr>
+		<td>Dirección de correo (*)</td>
+		<td><input type="text" name="Correo"></input></td>
+	</tr>
+	<tr>
+		<td>Password(*)</td>
+		<td><input type="password" name="Contraseña"></input></td>
+	</tr>
+	<tr>
+		<td>Numero de telefono (*)</td>
+		<td><input type="text" name="Telefono"></input></td>
+	</tr>
+	<tr>
+		<td>Especialidad (*), por ejemplo Ingeniera del Software</td>
+		<td><select name="Especialidad">
+				<option>Ingenieria del Software</option>
+				<option>Computacion</option>
+				<option>Gestion de informacion</option>
+				<option>Hardware</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Tecnologías y herramientas en las que esta interesado</td>
+		<td><textarea name=texto></textarea></td>
+	</tr>
+	</table>
+	<input type="submit" value="Enviar Datos"></input>
+	</form>
+	</body>
+</html>
