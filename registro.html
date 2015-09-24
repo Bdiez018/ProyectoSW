@@ -8,7 +8,6 @@
 		function vervalores(){
 			var sAux="";
 			var frm = document.getElementById("registro");
-			var cant;
 			for (i=0;i<frm.elements.length-1;i++)
 			{
 				sAux += frm.elements[i].name + "   :   ";
@@ -17,36 +16,168 @@
 			alert(sAux);
 		}
 	</script> 
+	
+	<script languaje="javascript">
+		
+		function verificar(){
+			if(verTel()&verNombre()&verCorreo()&verPass()&camposObigatorios()){
+				return true;
+			}else{return false;}
+		}
+		
+		function verTel(){
+			var ok = true;
+			var frm = document.getElementById("registro");
+			var tel = frm.elements[3].value;
+			var patt = new RegExp(/^[0-9]{9}/g);
+			if(patt.test(tel)==false){
+				var txt="El telefono no tiene 9 digitos";
+				alert(txt);
+				ok = false;
+			}
+			return ok;
+		}
+		
+		function verNombre(){
+			var ok = true;
+			var frm = document.getElementById("registro");
+			var nombre = frm.elements[0].value;
+			var splNombre = nombre.split(" ");
+			var tam = splNombre.length;
+			if(splNombre.length!=3){
+				var txt="El nombre no tiene nombre de pila y dos apellidos";
+				alert(txt)
+				ok = false;
+			}
+			return ok;
+		}
+		
+		function verCorreo(){
+			var ok = true;
+			var frm = document.getElementById("registro");
+			var str = frm.elements[1].value;
+			var patt = new RegExp(/^([a-z][a-z]*)[0-9]{3}@ikasle.ehu.(es|eus)$/g);
+			if(!patt.test(str)){
+				var txt="La estructura del correo no es: Letras + 3 dígitos + “@ikasle.ehu.” + “es”/”eus”";
+				alert(txt);
+				ok = false;
+			}
+			return ok;
+		}
+		
+		function verPass(){
+			var ok = true;
+			var frm = document.getElementById("registro");
+			var pass = frm.elements[2].value;
+			if(pass.length<6){
+				var txt="la contraseña no tiene al menos 6 caracteres";
+				alert(txt);
+				ok = false;
+			}
+			return ok;
+		}
+		
+		function camposObigatorios(){
+			var ok = true;
+			var frm = document.getElementById("registro");
+			for(i=0;i<5;i++){
+				var elem =frm.elements[i].value;
+				if(elem.length==0){
+					var  txt = "No todos los campos obligatorios estan rellenos";
+					alert(txt);
+					ok = false;
+				}
+			}
+			return ok;
+		}
+		
+		function checkEsp(obj){
+			if(obj.value=="Otra"){
+				var td = obj.parentNode;
+				var tr = td.parentNode;
+				tr.removeChild(td);
+				var textBox = document.createElement("input");
+				textBox.setAttribute("type", "text");
+				textBox.setAttribute("name", "especialidad");
+				textBox.setAttribute("onblur", "checkEsp(this)");
+				var ntd = document.createElement("td");
+				ntd.appendChild(textBox);
+				tr.appendChild(ntd);
+			}else if(obj.value==""){
+				var td = obj.parentNode;
+				var tr = td.parentNode;
+				td.removeChild(obj);
+				var select = document.createElement("select");
+				select.setAttribute("name","especialidad");
+				select.setAttribute("onchange", "checkEsp(this)");
+				var is = document.createElement("option");
+				var istxt = document.createTextNode("Ingeniería del Software");
+				is.appendChild(istxt);
+				var ic = document.createElement("option");
+				var ictxt = document.createTextNode("Ingeniería de Computadores");
+				ic.appendChild(ictxt);
+				var c = document.createElement("option");
+				var ctxt = document.createTextNode("Computación");
+				c.appendChild(ctxt);
+				var o = document.createElement("option");
+				var otxt = document.createTextNode("Otra");
+				o.appendChild(otxt);
+				select.appendChild(is);
+				select.appendChild(ic);
+				select.appendChild(c);
+				select.appendChild(o);
+				td.appendChild(select);
+			}
+
+			/*var frm = document.getElementById("registro");
+			var esp = frm.elements[4].value;
+			var elem = document.createElement("newSel");
+			var textBox = document.createElement("input");
+			textBox.setAttribute("type", "text");
+			textBox.setAttribute("id", "nombre");
+			document.getElementById("especi").setAttribute("type", "text");*/
+		}
+		
+		function borrarCont(obj){
+		obj.value="";
+		}
+		
+		function previsualizar(obj){
+			var txt=obj.value;
+			alert(txt);
+			document.getElementById("foto").setAttribute("src","http://segurouniversia.segurosbroker.com/img/v2.0/Universidades/espera_landing/coche.png");
+		}
+	</script>
 	</head>
 	
 	<body>
 	<h2 align= 'center'>Registro</h2>
 	<div id="container">
-		<form id='registro' name='registro' onSubmit='vervalores()'>
-		<table>
+		<form id='registro' name='registro' onSubmit='return verificar()' action="../Lab1/index.php" method="POST">
+		<table id='tabla'>
 		<tr>
 			<td>Nombre y apellidos (*)</td>
-			<td><input type="text" name="Nombre" value="Escribe tu nombre"></input></td>
+			<td><input type="text" name="Nombre"  onchange='verNombre()'></input></td>
 		</tr>
 		<tr>
 			<td>Dirección de correo (*)</td>
-			<td><input type="text" name="Correo"></input></td>
+			<td><input type="text" name="Correo" onchange='verCorreo()'></input></td>
 		</tr>
 		<tr>
 			<td>Password(*)</td>
-			<td><input type="password" name="Contraseña"></input></td>
+			<td><input type="password" name="Contrasena" onchange='verPass()'></input></td>
 		</tr>
 		<tr>
 			<td>Numero de telefono (*)</td>
-			<td><input type="text" name="Telefono"></input></td>
+			<td><input type="text" name="Telefono" maxlength="9" onchange='verTel()'></input></td>
 		</tr>
 		<tr>
-			<td>Especialidad (*), por ejemplo Ingeniera del Software</td>
-			<td><select name="Especialidad">
-					<option>Ingenieria del Software</option>
-					<option>Computacion</option>
-					<option>Gestion de informacion</option>
-					<option>Hardware</option>
+			<td>Especialidad (*)</td>
+			<td><select name="Especialidad" onchange='checkEsp(this)'>
+					<option>Ingeniería del Software</option>
+					<option>Ingeniería de Computadores</option>
+					<option>Computación</option>
+					<option>Otra</option>
 				</select>
 			</td>
 		</tr>
@@ -56,7 +187,8 @@
 		</tr>
 		<tr>
 			<td>Sube tu foto:</td>
-			<td><input type="file" name="foto"/></td>
+			<td><input type="file" name="foto" id='imageField' onchange="previsualizar(this)"/></td>
+			<td><img id="foto" title="tufoto" alt="tufoty" ><></td>
 		</tr>
 		</table></p>
 		<input type="submit" value="Enviar Datos"></input>
