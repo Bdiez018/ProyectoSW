@@ -128,14 +128,6 @@
 				select.appendChild(o);
 				td.appendChild(select);
 			}
-
-			/*var frm = document.getElementById("registro");
-			var esp = frm.elements[4].value;
-			var elem = document.createElement("newSel");
-			var textBox = document.createElement("input");
-			textBox.setAttribute("type", "text");
-			textBox.setAttribute("id", "nombre");
-			document.getElementById("especi").setAttribute("type", "text");*/
 		}
 		
 		function borrarCont(obj){
@@ -153,7 +145,7 @@
 	<body>
 	<h2 align= 'center'>Registro</h2>
 	<div id="container">
-		<form id='registro' name='registro' onSubmit='return verificar()' action="../Lab1/index.php" method="POST">
+		<form id='registro' name='registro' onSubmit='return verificar()' action="info.php" method="POST">
 		<table id='tabla'>
 		<tr>
 			<td>Nombre y apellidos (*)</td>
