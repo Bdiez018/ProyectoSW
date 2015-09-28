@@ -134,10 +134,9 @@
 		obj.value="";
 		}
 		
-		function previsualizar(obj){
-			var txt=obj.value;
-			alert(txt);
-			document.getElementById("foto").setAttribute("src","http://segurouniversia.segurosbroker.com/img/v2.0/Universidades/espera_landing/coche.png");
+		function previsualizar(){
+		var ruta = document.getElementById("imageField");
+	//	document.getElementById("pick").src=http://www.definicionabc.com/wp-content/uploads/icono1.png;
 		}
 	</script>
 	</head>
@@ -179,11 +178,11 @@
 		</tr>
 		<tr>
 			<td>Sube tu foto:</td>
-			<td><input type="file" name="foto" id='imageField' onchange="previsualizar(this)"/></td>
-			<td><img id="foto" title="tufoto" alt="tufoty" ><></td>
+			<td><input type="file" name="foto" id='imageField' onchange="previsualizar()"/></td>
 		</tr>
 		</table></p>
 		<input type="submit" value="Enviar Datos"></input>
+		<img id="pick" align="center"></src>
 		</form>
 	</div>
 	</body>

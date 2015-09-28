@@ -1,0 +1,98 @@
+<!DOCTYPE html> <!-- Declaración tipología documento -->
+<!-- Sistemas Web, formularios Laboratio 2 [HTML5,CSS3,Responsive por moviles], BORJA DIEZ - SIMONE BRAZZO -->
+<html>
+	<head>
+		<title>Formulario HTML5</title>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<script type="text/javascript" src="./jquery-1.11.3.min.js"></script><!-- Libreria JQuery 1.11.3 restricta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+		<meta charset="UTF-8">
+		<meta name="description" content="Formulario HTML5">
+		<meta name="keywords" content="HTML5,CSS3,JQuery">
+		<meta name="author" content="Borja Diez, Simone Brazzo">
+	</head>
+	<body>
+		<div id="cont_informatika_fakultatea"><img src="./informatika_fakultatea.jpg" alt="Informatika Fakultatea" title="Informatika Fakultatea"></img></div>
+		<div id="form-container">
+			<h1>Formulario HTML5/CSS3</h1>
+			<form action="" method="POST" id="form5">
+				<table class="tab" border="0">
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Name y Appellidos:</span></td>
+				    <td class="tab-td_2"><span class="input_name"><input type="" name="nameyapp" pattern="([a-z][a-z]*) ([a-z][a-z]*) ([a-z][a-z]*)" title="El formato corecto es: Nombre Appellidos_1 Appellidos_2" required /><span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Correo:</span></td>
+				    <td class="tab-td_2"><span class="input_name"><input type="email" title="El correo debe tener el formato de la UPV/EHU:
+Letras + 3 dígitos + '@ikasle.ehu.' + 'es'/'eus' " name="correo" pattern="^([a-z][a-z]*)[0-9]{3}@ikasle.ehu.(es|eus)$" required /></span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Password:</span></td>
+				    <td class="tab-td_2"><span class="input_name"><input type="password" minlength="6" name="password" required /></span>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Teléfono:</span></td>
+				    <td class="tab-td_2"><span class="input_name"><input type="tel" title="Ensertar al menos nueve numeros, gracias" name="tel" minlength="9" pattern="[0-9]*" required /></span></td>
+				  </tr>
+				  <tr id="tr_select">
+				    <td class="tab-td_1"><span class="field_name">Especialidad:</span></td>
+				    <td class="tab-td_2"><span class="input_name">
+					<select id="select_field" name="espec"/> 
+						<option value="ingsft">Ingeniría del Software</option>
+						<option value="cmp">Computacíon</option>
+						<option value="hdw">Hardware</option>
+						<option value="otr">Otras</option>
+					</select>
+					</span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Tecnologías y herramientas de interese:</span></td>
+				    <td class="tab-td_2"><span class="input_name"><textarea value="tecyherr"></textarea></span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Ensertar la imagen: </span></td>
+				    <td class="tab-td_2"><input type="file" id="imagen_button" /></span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1 collspan_2" colspan="2"><span><img id="imagen_upload" src="" alt="Imagen" title="Imagen subida"></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1 collspan_2" colspan="2"><span><input type="submit" value="Envia" /></span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_2 collspan_2" colspan="2"><p id="authors">&copy; 2015 Borja Diez - Simone Brazzo</p></td>
+				  </tr>
+				</table>
+			</form>
+		</div>
+		<script>
+			$(document).ready(function(){
+				var selected = false;
+				$("#select_field").on("change",function() {
+					if((this.value == "otr") && (selected == false))
+					{
+						$("<tr class='otra'><td class='tab-td_1'><span class='field_name'>Otra:</span></td><td class='tab-td_2><span class='input_name'><input type='text' value='' name='otra' required/></span></td></tr>").insertAfter("#tr_select");
+						selected = true;
+					}
+					if(this.value != "otr")
+					{
+						$(".otra").remove();
+						selected = false;
+					}
+				});
+				$("#imagen_button").on("change",function(){
+					if(this.files && this.files[0])//podemos utilizar los apis por leer los ficheros
+					{
+						var reader = new FileReader();
+						reader.onload = function(e)
+						{
+							$("#imagen_upload").attr("src",e.target.result);
+						}
+						reader.readAsDataURL(this.files[0]);
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
