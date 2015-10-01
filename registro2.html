@@ -101,7 +101,7 @@
 				tr.removeChild(td);
 				var textBox = document.createElement("input");
 				textBox.setAttribute("type", "text");
-				textBox.setAttribute("name", "especialidad");
+				textBox.setAttribute("name", "espec");
 				textBox.setAttribute("onblur", "checkEsp(this)");
 				var ntd = document.createElement("td");
 				ntd.appendChild(textBox);
@@ -111,7 +111,7 @@
 				var tr = td.parentNode;
 				td.removeChild(obj);
 				var select = document.createElement("select");
-				select.setAttribute("name","especialidad");
+				select.setAttribute("name","espec");
 				select.setAttribute("onchange", "checkEsp(this)");
 				var is = document.createElement("option");
 				var istxt = document.createTextNode("Ingeniería del Software");
@@ -156,12 +156,12 @@
 	<body>
 	<div id="cont_informatika_fakultatea" align="center"><img src="./informatika_fakultatea.jpg" alt="Informatika Fakultatea" title="Informatika Fakultatea"></img></div>
 	<div id="container">
-	<form id='registro' name='registro' onSubmit='return verificar()' action="info.php" method="POST">
+	<form id='registro' name='registro' onSubmit='return verificar()' action="Registrar.php" method="POST">
 		<table id='tabla' align="center">
 		<h1 align="center">Formulario</h1>
 		<tr>
 			<td align="right" width="180 px">Nombre y apellidos:    (*)</td>
-			<td align="center"><input type="text" name="nombre"  onchange='verNombre()'></input></td>
+			<td align="center"><input type="text" name="nameyapp"  onchange='verNombre()'></input></td>
 		</tr>
 		<tr align="center">
 			<td align="right" width="180 px">Dirección de correo:    (*)</td>
@@ -169,15 +169,15 @@
 		</tr>
 		<tr>
 			<td align="right" width="180 px">Password:    (*)</td>
-			<td align="center"><input type="password" name="contrasena" onchange='verPass()'></input></td>
+			<td align="center"><input type="password" name="password" onchange='verPass()'></input></td>
 		</tr align="center">
 		<tr>
 			<td align="right" width="180 px">Numero de telefono:    (*)</td>
-			<td align="center"><input type="text" name="telefono" maxlength="9" onchange='verTel()'></input></td>
+			<td align="center"><input type="text" name="tel" maxlength="9" onchange='verTel()'></input></td>
 		</tr>
 		<tr align="center">
 			<td align="right" width="180 px">Especialidad:    (*)</td>
-			<td align="center"><select name="especialidad" onchange='checkEsp(this)'>
+			<td align="center"><select name="espec" onchange='checkEsp(this)'>
 					<option>Ingeniería del Software</option>
 					<option>Ingeniería de Computadores</option>
 					<option>Computación</option>
@@ -187,7 +187,7 @@
 		</tr>
 		<tr align="center">
 			<td align="right" width="180 px">Tecnologías y herramientas en las que esta interesado:</td>
-			<td align="center"><textarea name="texto""></textarea></td>
+			<td align="center"><textarea name="interes""></textarea></td>
 		</tr>
 		<tr>
 			<td align="right" width="100 px">Sube tu foto:</td>
