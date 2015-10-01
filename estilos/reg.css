@@ -1,6 +1,16 @@
 body	{background-color:white}
-table	{border-spacing:15px}
-#container { width: 700px; height: 500px; background-color: #74CCF5; position: relative; top: 100px; border: 1px solid black; border-radius: 20px; margin: 0 auto}
+table	{border-spacing:5px; font-size:16px; font-family:verdana;}
+td		{height:10px}
+div		{font: 16px ;font-family:Roboto}
+text	{height:30px}
+input 	{width:200px;height:25px;}
+select	{width:200px;height:25px;font-size:16px}
+
+#imagen_upload{width:200px;height:150;}
+
+#btnSubida{font-size:16px;top:20px;left:40px}
+
+#container { width: 530px; height: 600px; background-color: #eee; position: relative; top: 0px; border: 1px solid black; border-radius: 10px; margin: 0 auto;box-shadow: 6px 6px 12px #999;}
 
 @media only screen and (min-width : 320px) and (max-width : 767px) and (orientation : portrait){
 	nput {

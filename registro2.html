@@ -16,7 +16,7 @@
 			alert(sAux);
 		}
 	</script> 
-	
+	<script type="text/javascript" src="./jquery-1.11.3.min.js"></script>
 	<script languaje="javascript">
 		
 		function verificar(){
@@ -34,6 +34,9 @@
 				var txt="El telefono no tiene 9 digitos";
 				alert(txt);
 				ok = false;
+				frm.elements[3].setAttribute("border-color","red");
+			}else{
+			frm.elements[3].setAttribute("border-color","green");
 			}
 			return ok;
 		}
@@ -133,46 +136,48 @@
 		function borrarCont(obj){
 		obj.value="";
 		}
-		
-		function previsualizar(){
-		var ruta = document.getElementById("imageField");
-		if(this.files && this.files[0])//podemos utilizar las apis para leer los ficheros
+	</script>
+	<script>
+			$(document).ready(function(){
+				$("#imageField").on("change",function(){
+					if(this.files && this.files[0])//podemos utilizar los apis por leer los ficheros
 					{
 						var reader = new FileReader();
 						reader.onload = function(e)
 						{
-							document.getElementById("imagen_upload").src = e.target.result;
+							$("#imagen_upload").attr("src",e.target.result);
 						}
 						reader.readAsDataURL(this.files[0]);
 					}
-		}
-	</script>
+				});
+			});
+		</script>
 	</head>
-	
 	<body>
-	<h2 align= 'center'>Registro</h2>
+	<div id="cont_informatika_fakultatea" align="center"><img src="./informatika_fakultatea.jpg" alt="Informatika Fakultatea" title="Informatika Fakultatea"></img></div>
 	<div id="container">
-		<form id='registro' name='registro' onSubmit='return verificar()' action="info.php" method="POST">
-		<table id='tabla'>
+	<form id='registro' name='registro' onSubmit='return verificar()' action="info.php" method="POST">
+		<table id='tabla' align="center">
+		<h1 align="center">Formulario</h1>
 		<tr>
-			<td>Nombre y apellidos (*)</td>
-			<td><input type="text" name="Nombre"  onchange='verNombre()'></input></td>
+			<td align="right" width="180 px">Nombre y apellidos:    (*)</td>
+			<td align="center"><input type="text" name="nombre"  onchange='verNombre()'></input></td>
+		</tr>
+		<tr align="center">
+			<td align="right" width="180 px">Dirección de correo:    (*)</td>
+			<td align="center"><input type="text" name="correo" onchange='verCorreo()'></input></td>
 		</tr>
 		<tr>
-			<td>Dirección de correo (*)</td>
-			<td><input type="text" name="Correo" onchange='verCorreo()'></input></td>
-		</tr>
+			<td align="right" width="180 px">Password:    (*)</td>
+			<td align="center"><input type="password" name="contrasena" onchange='verPass()'></input></td>
+		</tr align="center">
 		<tr>
-			<td>Password(*)</td>
-			<td><input type="password" name="Contrasena" onchange='verPass()'></input></td>
+			<td align="right" width="180 px">Numero de telefono:    (*)</td>
+			<td align="center"><input type="text" name="telefono" maxlength="9" onchange='verTel()'></input></td>
 		</tr>
-		<tr>
-			<td>Numero de telefono (*)</td>
-			<td><input type="text" name="Telefono" maxlength="9" onchange='verTel()'></input></td>
-		</tr>
-		<tr>
-			<td>Especialidad (*)</td>
-			<td><select name="Especialidad" onchange='checkEsp(this)'>
+		<tr align="center">
+			<td align="right" width="180 px">Especialidad:    (*)</td>
+			<td align="center"><select name="especialidad" onchange='checkEsp(this)'>
 					<option>Ingeniería del Software</option>
 					<option>Ingeniería de Computadores</option>
 					<option>Computación</option>
@@ -180,20 +185,23 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
-			<td>Tecnologías y herramientas en las que esta interesado</td>
-			<td><textarea name=texto></textarea></td>
+		<tr align="center">
+			<td align="right" width="180 px">Tecnologías y herramientas en las que esta interesado:</td>
+			<td align="center"><textarea name="texto""></textarea></td>
 		</tr>
 		<tr>
-			<td>Sube tu foto:</td>
-			<td><input type="file" name="foto" id='imageField' onchange="previsualizar(this)"/></td>
+			<td align="right" width="100 px">Sube tu foto:</td>
+			<td><input type="file" name="foto" id='imageField'></input></td>
 		</tr>
 		<tr>
-			<td><img id="imagen_upload" src="" alt="Imagen" title="Imagen subida"></td>
+		<td align="center"><input id="btnSubida" type="submit" value="Enviar Datos" align="center"></input></td>
 		</tr>
-		</table></p>
-		<input type="submit" value="Enviar Datos"></input>
-		</form>
+		</table>
+	</form>	
+	<div align="center">
+	<img id="imagen_upload" src=""></td>
 	</div>
+	</div>
+
 	</body>
 </html>

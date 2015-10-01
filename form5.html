@@ -1,5 +1,6 @@
 <!DOCTYPE html> <!-- Declaración tipología documento -->
 <!-- Sistemas Web, formularios Laboratio 2 [HTML5,CSS3,Responsive por moviles], BORJA DIEZ - SIMONE BRAZZO -->
+	<link rel="stylesheet" media='all' href="estilos/reg.css">
 <html>
 	<head>
 		<title>Formulario HTML5</title>
@@ -15,11 +16,11 @@
 		<div id="cont_informatika_fakultatea"><img src="./informatika_fakultatea.jpg" alt="Informatika Fakultatea" title="Informatika Fakultatea"></img></div>
 		<div id="form-container">
 			<h1>Formulario HTML5/CSS3</h1>
-			<form action="" method="POST" id="form5">
+			<form action="Registrar.php" method="POST" id="form5">
 				<table class="tab" border="0">
 				  <tr>
-				    <td class="tab-td_1"><span class="field_name">Name y Appellidos:</span></td>
-				    <td class="tab-td_2"><span class="input_name"><input type="" name="nameyapp" pattern="([a-z][a-z]*) ([a-z][a-z]*) ([a-z][a-z]*)" title="El formato corecto es: Nombre Appellidos_1 Appellidos_2" required /><span></td>
+				    <td class="tab-td_1"><span class="field_name">Nombre y Apellidos:   (*)</span></td>
+				    <td class="tab-td_2"><span class="input_name"><input type="text" name="nameyapp" pattern="([a-z][a-z]*) ([a-z][a-z]*) ([a-z][a-z]*)" title="El formato corecto es: Nombre Appellidos_1 Appellidos_2" required /><span></td>
 				  </tr>
 				  <tr>
 				    <td class="tab-td_1"><span class="field_name">Correo:</span></td>
@@ -39,7 +40,7 @@ Letras + 3 dígitos + '@ikasle.ehu.' + 'es'/'eus' " name="correo" pattern="^([a-
 				    <td class="tab-td_1"><span class="field_name">Especialidad:</span></td>
 				    <td class="tab-td_2"><span class="input_name">
 					<select id="select_field" name="espec"/> 
-						<option value="ingsft">Ingeniría del Software</option>
+						<option value="ingsft">Ingeniería del Software</option>
 						<option value="cmp">Computacíon</option>
 						<option value="hdw">Hardware</option>
 						<option value="otr">Otras</option>
@@ -48,10 +49,10 @@ Letras + 3 dígitos + '@ikasle.ehu.' + 'es'/'eus' " name="correo" pattern="^([a-
 				  </tr>
 				  <tr>
 				    <td class="tab-td_1"><span class="field_name">Tecnologías y herramientas de interese:</span></td>
-				    <td class="tab-td_2"><span class="input_name"><textarea value="tecyherr"></textarea></span></td>
+				    <td class="tab-td_2"><span class="input_name"><textarea value="tecyherr"name="interes"></textarea></span></td>
 				  </tr>
 				  <tr>
-				    <td class="tab-td_1"><span class="field_name">Ensertar la imagen: </span></td>
+				    <td class="tab-td_1"><span class="field_name">Insertar la imagen: </span></td>
 				    <td class="tab-td_2"><input type="file" id="imagen_button" /></span></td>
 				  </tr>
 				  <tr>
