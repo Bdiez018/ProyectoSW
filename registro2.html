@@ -16,7 +16,7 @@
 			alert(sAux);
 		}
 	</script> 
-	<script type="text/javascript" src="./jquery-1.11.3.min.js"></script>
+	
 	<script languaje="javascript">
 		
 		function verificar(){
@@ -34,9 +34,6 @@
 				var txt="El telefono no tiene 9 digitos";
 				alert(txt);
 				ok = false;
-				frm.elements[3].setAttribute("border-color","red");
-			}else{
-			frm.elements[3].setAttribute("border-color","green");
 			}
 			return ok;
 		}
@@ -101,7 +98,7 @@
 				tr.removeChild(td);
 				var textBox = document.createElement("input");
 				textBox.setAttribute("type", "text");
-				textBox.setAttribute("name", "espec");
+				textBox.setAttribute("name", "especialidad");
 				textBox.setAttribute("onblur", "checkEsp(this)");
 				var ntd = document.createElement("td");
 				ntd.appendChild(textBox);
@@ -111,7 +108,7 @@
 				var tr = td.parentNode;
 				td.removeChild(obj);
 				var select = document.createElement("select");
-				select.setAttribute("name","espec");
+				select.setAttribute("name","especialidad");
 				select.setAttribute("onchange", "checkEsp(this)");
 				var is = document.createElement("option");
 				var istxt = document.createTextNode("Ingeniería del Software");
@@ -136,48 +133,46 @@
 		function borrarCont(obj){
 		obj.value="";
 		}
-	</script>
-	<script>
-			$(document).ready(function(){
-				$("#imageField").on("change",function(){
-					if(this.files && this.files[0])//podemos utilizar los apis por leer los ficheros
+		
+		function previsualizar(){
+		var ruta = document.getElementById("imageField");
+		if(this.files && this.files[0])//podemos utilizar las apis para leer los ficheros
 					{
 						var reader = new FileReader();
 						reader.onload = function(e)
 						{
-							$("#imagen_upload").attr("src",e.target.result);
+							document.getElementById("imagen_upload").src = e.target.result;
 						}
 						reader.readAsDataURL(this.files[0]);
 					}
-				});
-			});
-		</script>
+		}
+	</script>
 	</head>
+	
 	<body>
-	<div id="cont_informatika_fakultatea" align="center"><img src="./informatika_fakultatea.jpg" alt="Informatika Fakultatea" title="Informatika Fakultatea"></img></div>
+	<h2 align= 'center'>Registro</h2>
 	<div id="container">
-	<form id='registro' name='registro' onSubmit='return verificar()' action="Registrar.php" method="POST">
-		<table id='tabla' align="center">
-		<h1 align="center">Formulario</h1>
+		<form id='registro' name='registro' onSubmit='return verificar()' action="info.php" method="POST">
+		<table id='tabla'>
 		<tr>
-			<td align="right" width="180 px">Nombre y apellidos:    (*)</td>
-			<td align="center"><input type="text" name="nameyapp"  onchange='verNombre()'></input></td>
-		</tr>
-		<tr align="center">
-			<td align="right" width="180 px">Dirección de correo:    (*)</td>
-			<td align="center"><input type="text" name="correo" onchange='verCorreo()'></input></td>
+			<td>Nombre y apellidos (*)</td>
+			<td><input type="text" name="Nombre"  onchange='verNombre()'></input></td>
 		</tr>
 		<tr>
-			<td align="right" width="180 px">Password:    (*)</td>
-			<td align="center"><input type="password" name="password" onchange='verPass()'></input></td>
-		</tr align="center">
-		<tr>
-			<td align="right" width="180 px">Numero de telefono:    (*)</td>
-			<td align="center"><input type="text" name="tel" maxlength="9" onchange='verTel()'></input></td>
+			<td>Dirección de correo (*)</td>
+			<td><input type="text" name="Correo" onchange='verCorreo()'></input></td>
 		</tr>
-		<tr align="center">
-			<td align="right" width="180 px">Especialidad:    (*)</td>
-			<td align="center"><select name="espec" onchange='checkEsp(this)'>
+		<tr>
+			<td>Password(*)</td>
+			<td><input type="password" name="Contrasena" onchange='verPass()'></input></td>
+		</tr>
+		<tr>
+			<td>Numero de telefono (*)</td>
+			<td><input type="text" name="Telefono" maxlength="9" onchange='verTel()'></input></td>
+		</tr>
+		<tr>
+			<td>Especialidad (*)</td>
+			<td><select name="Especialidad" onchange='checkEsp(this)'>
 					<option>Ingeniería del Software</option>
 					<option>Ingeniería de Computadores</option>
 					<option>Computación</option>
@@ -185,23 +180,20 @@
 				</select>
 			</td>
 		</tr>
-		<tr align="center">
-			<td align="right" width="180 px">Tecnologías y herramientas en las que esta interesado:</td>
-			<td align="center"><textarea name="interes""></textarea></td>
+		<tr>
+			<td>Tecnologías y herramientas en las que esta interesado</td>
+			<td><textarea name=texto></textarea></td>
 		</tr>
 		<tr>
-			<td align="right" width="100 px">Sube tu foto:</td>
-			<td><input type="file" name="foto" id='imageField'></input></td>
+			<td>Sube tu foto:</td>
+			<td><input type="file" name="foto" id='imageField' onchange="previsualizar(this)"/></td>
 		</tr>
 		<tr>
-		<td align="center"><input id="btnSubida" type="submit" value="Enviar Datos" align="center"></input></td>
+			<td><img id="imagen_upload" src="" alt="Imagen" title="Imagen subida"></td>
 		</tr>
-		</table>
-	</form>	
-	<div align="center">
-	<img id="imagen_upload" src=""></td>
+		</table></p>
+		<input type="submit" value="Enviar Datos"></input>
+		</form>
 	</div>
-	</div>
-
 	</body>
 </html>
