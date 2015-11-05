@@ -1,0 +1,165 @@
+header
+{
+	text-align: center;
+    font-family: sans-serif;
+}
+#form-container
+{
+    border: 1px solid #A9A9A9;
+    width: 500px;
+    position: relative;
+    margin: 0 auto;
+    height: auto;
+    box-shadow: 0px 0px 10px #888888;
+    padding: 10px;
+    background-color: #F1F1F1;
+    border-radius: 6px;
+}
+#form-container h1{
+	margin-top: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 25px;
+	font-weight: normal;
+    font-family: monospace;
+}
+#form-container p
+{
+	text-align: center;
+}
+footer
+{
+	position: relative;
+	margin: 0 auto;
+}
+#form-container input
+{
+	position: relative;
+    padding: 4px 5px 5px 5px;
+    border-radius: 2px;
+    border: 1px solid #D4D4D4;
+}
+#form-container input:focus:required:invalid{
+	border: 1px solid red;
+    /*background-image: url("");
+    background-position: right top;
+    background-repeat: no-repeat;*/
+}
+#form-container input:required:valid {
+	border: 1px solid green;
+    /*background-image: url("");
+    background-position: right top;
+    background-repeat: no-repeat;*/
+}
+
+#form-container input[type=submit]
+{
+	border-radius: 2px;
+    background-color: #5151FF;
+    color: white;
+    border: 1px solid grey;
+    padding: 8px 15px 8px 15px;
+    cursor: pointer;
+}
+#form-container textarea
+{
+	resize: none;
+}
+#form-container select
+{
+}
+#authors
+{
+	text-align: center;
+    font-size: 10px;
+    margin-bottom: 0px;
+}
+#submitbtn
+{
+	height: 25px;
+}
+.input_name
+{
+	position: relative;
+}
+.field_name
+{
+	position: relative;
+	font-family: monospace;
+}
+.collspan_2
+{
+	text-align: center !important;
+}
+#cont_informatika_fakultatea 
+{
+    text-align: center;
+    width: 100%;
+}
+.tab  {
+	border-collapse:collapse;
+	border-spacing:0;}
+.tab td{
+	font-family:Arial, sans-serif;
+	font-size:14px;
+	padding:10px 5px;
+	overflow:hidden;
+	word-break:normal;
+}
+.tab th{
+	font-family:Arial, sans-serif;
+	font-size:14px;
+	font-weight:normal;
+	padding:10px 5px;
+	border-style:solid;
+	border-width:1px;
+	overflow:hidden;
+	word-break:normal;
+}
+.tab .tab-td_1
+{
+	text-align:right;
+	width: 50%;
+}
+.collspan_2{
+	width: 100%;
+}
+.tab{
+	width: 100%;
+}
+#imagen_upload
+{
+	width: 100%;
+}
+#link-volver
+{
+	position: relative;
+    top: 30px;
+}
+@media only screen and (min-width : 320px) and (max-width : 767px) and (orientation : portrait){
+	#cont_informatika_fakultatea img{
+		width: 100%;
+	}
+	body{
+		margin: 0px;
+	}
+	#form-container {
+	    border: 1px solid #A9A9A9;
+	    width: 100%;
+	    position: relative;
+	    height: auto;
+	    padding: 10px;
+	    background-color: #F1F1F1;
+	    border-radius: 0px;
+	    box-shadow: none;
+	    padding: 0px;
+	}
+	#form-container .input_name input
+	{
+		width: 90%;
+	}
+	#form-container textarea 
+	{
+    	width: 90%;
+    }
+}

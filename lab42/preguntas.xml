@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="ver_preguntas.xsl"?>
+<assessmentItems>
+	<assessmentItem complexity="1" subject="Web">
+		<itemBody>
+			<p>¿Cuál es el protocolo de transferencia de hipertexto?</p>
+		</itemBody>
+		<correctResponse>
+			<value>HTML</value>
+		</correctResponse>
+	</assessmentItem>
+</assessmentItems>

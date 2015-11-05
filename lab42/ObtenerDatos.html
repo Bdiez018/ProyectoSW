@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<title>Autocompletar</title>
+	</head>
+	<script languaje="javascript">
+	function rellenar(){
+		var xmlDoc = cargarXMLDoc('usuarios.xml');
+		if (xmlDoc != null){
+			var usuarios = xmlDoc.getElementsByTagName("usuarios")[0].getElementsByTagName("usuario");
+			var enc = false;
+			var correo = document.getElementById('correo').value;
+			for (var i =0; i < usuarios.length; i++){
+				var id = usuarios[i].getElementsByTagName("email")[0].childNodes[0].nodeValue;
+				if(id == correo){ 
+					enc = true;
+					document.getElementById('nombre').value = usuarios[i].getElementsByTagName("nombre")[0].childNodes[0].nodeValue;
+					document.getElementById('apellidos').value = usuarios[i].getElementsByTagName("apellido1")[0].childNodes[0].nodeValue;
+					document.getElementById('tel').value = usuarios[i].getElementsByTagName("telefono")[0].childNodes[0].nodeValue;
+				}
+			}
+			if(!enc){
+				document.getElementById('nombre').value = "";
+				document.getElementById('apellidos').value = "";
+				document.getElementById('tel').value = "";
+				alert('No se puede rellenar, el usuario no existe');	
+			}
+		}
+	}
+	
+	function cargarXMLDoc(archivoXML) 
+	{
+	var xmlDoc;
+
+	if (window.XMLHttpRequest)
+	{
+		xmlDoc = new window.XMLHttpRequest();
+		xmlDoc.open("GET", archivoXML, false);
+		xmlDoc.send("");
+		return xmlDoc.responseXML;
+	}
+	alert("Error cargando el documento.");
+	return null;
+	}
+	</script>
+	<body>
+		<img></img>
+		<div id="cuerpo">
+			<form id="autoForm">
+				<table id='tabla' align="center">
+					<tr>
+						<td>Correo</td>
+						<td ><input id="correo" "type="text" onblur="rellenar()"></input></td>
+					</tr>
+					<tr >
+						<td>Nombre</td>
+						<td><input id="nombre" type="text" name="nombre"></input></td>
+					</tr>
+					<tr>
+						<td>Apellidos</td>
+						<td ><input id="apellidos" type="text" name="apellidos"></input></td>
+					</tr >
+					<tr>
+						<td>Telefono</td>
+						<td><input id="tel" type="text" name="telefono"></input></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>

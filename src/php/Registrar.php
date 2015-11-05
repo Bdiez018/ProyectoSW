@@ -6,12 +6,12 @@
 	if(!mysql_query($sql)){
 		die('Error:' .mysql_error());
 	}
-	echo "1 registro añadido";
 	mysql_close();
 ?>
 <html>
-<body>
-<BR>
-<a href="VerUsuarios.php">Ver usuarios de la BD</a>';  
-</body>
+	<body>
+		<h1>Usuario registrado</h1>
+		<BR>
+		<a href="VerUsuarios.php">Ver usuarios de la BD</a>';  
+	</body>
 </html>

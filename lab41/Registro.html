@@ -1,0 +1,114 @@
+<!DOCTYPE html> <!-- Declaración tipología documento -->
+<!-- Sistemas Web, formularios Laboratio 4 - Seguridad - BORJA DIEZ - SIMONE BRAZZO -->
+<html>
+	<head>
+		<title>Formulario HTML5</title>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<script type="text/javascript" src="./jquery-1.11.3.min.js"></script><!-- Libreria JQuery 1.11.3 restricta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<meta name="description" content="Formulario HTML5">
+		<meta name="keywords" content="HTML5,CSS3,JQuery">
+		<meta name="author" content="Borja Diez, Simone Brazzo">
+	</head>
+	<body>
+		<div id="cont_informatika_fakultatea"><img src="./informatika_fakultatea.jpg" alt="Informatika Fakultatea" title="Informatika Fakultatea"/></div>
+		<div id='page-wrap' style="width: 200px;float: left;">
+			<div class="pure-menu custom-restricted-width">
+			    <span class="pure-menu-heading">MENU</span>
+			    <ul class="pure-menu-list">
+			    	<li class="pure-menu-item"><a href="layout.html" class="pure-menu-link">Home</a></li>
+			    	<li class="pure-menu-item"><a href="Login.php" class="pure-menu-link">Login</a></li>
+			        <li class="pure-menu-item"><a href="ver_preguntas.php" class="pure-menu-link">Ver Preguntas</a></li>
+			        <li class="pure-menu-item"><a href="InsertarPregunta.php" class="pure-menu-link">Insertar Preguntas</a></li>
+			        <li class="pure-menu-item"><a href="Registro.html" class="pure-menu-link">Registro</a></li>
+			        <li class="pure-menu-item"><a href="VerUsuariosConFoto.php" class="pure-menu-link">Ver Usuarios</a></li>
+			        <li class="pure-menu-heading">Enlaces</li>
+			        <li class="pure-menu-item"><a href="https://github.com/simobrazz" class="pure-menu-link">Cuenta Github</a></li>
+			        <li class="pure-menu-item"><a href="https://es.wikipedia.org/wiki/Quiz" class="pure-menu-link">Que es un QUIZ?</a></li>
+			    </ul>
+			</div>
+		</div>
+		<div id="form-container">
+			<h1>Formulario HTML5/CSS3 AVANZADO</h1>
+			<form action="RegistrarConFoto.php" enctype="multipart/form-data" method="POST" id="form5">
+				<table class="tab" border="0">
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Name y Appellidos:</span></td>
+				    <td class="tab-td_2"><span class="input_name"><input type="text" name="nombre" pattern="([a-zA-Z][a-zA-Z]*) ([a-zA-Z][a-zA-Z]*) ([a-zA-Z][a-zA-Z]*)" title="El formato corecto es: Nombre Appellidos_1 Appellidos_2" required /><span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Correo:</span></td>
+				    <td class="tab-td_2"><span class="input_name"><input type="email" title="Correo" name="correo"  required /></span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Password:</span></td>
+				    <td class="tab-td_2"><span class="input_name"><input type="password" minlength="6" name="pass" required /></span>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Teléfono:</span></td>
+				    <td class="tab-td_2"><span class="input_name"><input type="tel" title="Ensertar al menos nueve numeros, gracias" name="tel" minlength="9" maxlength="9" pattern="([0-9]*){9}" required /></span></td>
+				  </tr>
+				  <tr id="tr_select">
+				    <td class="tab-td_1"><span class="field_name">Especialidad:</span></td>
+				    <td class="tab-td_2"><span class="input_name">
+					<select id="select_field" name="espec"> 
+						<option value="ingsft">Ingeniría del Software</option>
+						<option value="cmp">Computacíon</option>
+						<option value="hdw">Hardware</option>
+						<option value="otr">Otras</option>
+					</select>
+					</span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Tecnologías y herramientas de interese:</span></td>
+				    <td class="tab-td_2"><span class="input_name"><textarea name="interes" value="tecyherr"></textarea></span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1"><span class="field_name">Insertar la imagen (max 500kb): </span></td>
+				    <td class="tab-td_2"><input type="file" name="imgfile" id="imagen_button" max="4" accept="image/*" required></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1 collspan_2" colspan="2"><span><img id="imagen_upload" src="" alt="Imagen" title="Imagen subida"></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_1 collspan_2" colspan="2"><span><input type="submit" value="Envia" title="Insertar imagen, gracias!"/></span></td>
+				  </tr>
+				  <tr>
+				    <td class="tab-td_2 collspan_2" colspan="2"><p id="authors">&copy; 2015 Borja Diez - Simone Brazzo</p></td>
+				  </tr>
+				</table>
+			</form>
+		</div>
+		<script>
+			$(document).ready(function(){
+				var selected = false;
+				$("#select_field").on("change",function() {
+					if((this.value == "otr") && (selected == false))
+					{
+						$("<tr class='otra'><td class='tab-td_1'><span class='field_name'>Otra:</span></td><td class='tab-td_2><span class='input_name'><input type='text' value='' name='otra' required/></span></td></tr>").insertAfter("#tr_select");
+						selected = true;
+					}
+					if(this.value != "otr")
+					{
+						$(".otra").remove();
+						selected = false;
+					}
+				});
+				$("#imagen_button").on("change",function(){
+					if(this.files && this.files[0])//podemos utilizar los apis por leer los ficheros
+					{
+						var reader = new FileReader();
+						reader.onload = function(e)
+						{
+							$("#imagen_upload").attr("src",e.target.result);
+						}
+						reader.readAsDataURL(this.files[0]);
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
